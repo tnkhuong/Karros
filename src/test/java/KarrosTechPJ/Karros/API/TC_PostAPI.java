@@ -1,23 +1,8 @@
 package KarrosTechPJ.Karros.API;
 
 import org.testng.annotations.Test;
-
-import KarrosTechPJ.Karros.Base.GlobalVariables;
-import KarrosTechPJ.Karros.Base.WebInit;
-import KarrosTechPJ.Karros.Web.FiltersPage;
-import KarrosTechPJ.Karros.Web.LoginPage;
-import KarrosTechPJ.Karros.Web.RequestPage;
-import KarrosTechPJ.Karros.API.PostAPIsMethods;
-
-import org.testng.annotations.BeforeMethod;
-
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
-//import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 
 public class TC_PostAPI {  
 
