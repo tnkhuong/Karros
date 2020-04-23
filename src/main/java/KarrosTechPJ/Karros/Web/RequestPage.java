@@ -133,9 +133,10 @@ public class RequestPage {
 		}
 		
 		// Verify that the data in table same as data file.
-		for (int i = 0; i<=gettxt.getTotalLine(file_path); i++)
+		
+		for (int i = 0; i<gettxt.getTotalLine(file_path); i++)
 		{
-			for (int j = 0; j<=9;j++)
+			for (int j = 0; j<9;j++)
 			{				
 				_value_from_file = gettxt.getAValue(file_path,i+1,j+1);
 				System.out.println("Return value in .txt file at Line: " + i + " and Column: " + j + ": " + _value_from_file);
