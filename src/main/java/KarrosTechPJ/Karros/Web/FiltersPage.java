@@ -88,12 +88,13 @@ public class FiltersPage {
 			
 	public void clickApplyFilters () throws InterruptedException
 	{
-		int _timeout=0;		
-		while (!btnApplyFilters.isEnabled() && _timeout <= 5000)
-		{
+		int _timeout=0;
+			
+		do {
 			_timeout = _timeout + 1000;
 			Thread.sleep(1000);
-		}
+		}while (!btnApplyFilters.isDisplayed() && _timeout <= 5000);
+		
 		System.out.println("Click on Apply Filters.");
 		btnApplyFilters.click();
 	}
