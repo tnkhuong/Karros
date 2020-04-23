@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="KarrosTechPJ.Karros.RequestAccess.TC_Sort_First_Name"/>
+      <class name="KarrosTechPJ.Karros.API.TC_PostAPI"/>
+      <class name="KarrosTechPJ.Karros.Filters.TC_Request_Status"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

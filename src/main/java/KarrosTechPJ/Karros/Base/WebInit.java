@@ -9,12 +9,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class WebInit {
 	public static WebDriver driver;
-	public static WebDriver setup(String browser) throws Exception{
-		
+	public static WebDriver setup(String browser) throws Exception{		
 		
 		String os = System.getProperty("os.name").toLowerCase();
-		System.out.println(os);
-		
 		
        //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("firefox")){

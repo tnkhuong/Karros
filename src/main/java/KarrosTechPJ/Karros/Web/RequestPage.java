@@ -125,21 +125,21 @@ public class RequestPage {
 		
 		// Wait until data in table loaded.
 		int rowCount=driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size();
+		int colCount=driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr[1]/td")).size();
 		int _count = 0;
 		while (rowCount < 2 && _count < 5){
 			Thread.sleep(1000);
 			_count++;
 			rowCount=driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size();
-		}
+		}		
 		
-		// Verify that the data in table same as data file.
-		
+		// Verify that the data in table same as data file.		
 		for (int i = 0; i<gettxt.getTotalLine(file_path); i++)
 		{
-			for (int j = 0; j<9;j++)
-			{				
+			for (int j = 0; j<colCount-1;j++)
+			{			
 				_value_from_file = gettxt.getAValue(file_path,i+1,j+1);
-				System.out.println("Return value in .txt file at Line: " + i + " and Column: " + j + ": " + _value_from_file);
+				System.out.println("Return value in .txt file at Line: " + (i+1) + " and Column: " + (j+1) + ": " + _value_from_file);		
 				_value_from_table = getRequestAccessACell(i+1,j+2);
 			    Assert.assertEquals(_value_from_file, _value_from_table);
 			}

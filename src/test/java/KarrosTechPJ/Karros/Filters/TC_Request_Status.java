@@ -1,4 +1,4 @@
-package KarrosTechPJ.Karros;
+package KarrosTechPJ.Karros.Filters;
 
 import org.testng.annotations.Test;
 
@@ -18,9 +18,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 
-public class NewTest {
-  
-	WebDriver driver;
+public class TC_Request_Status {
+	
+	WebDriver driver;	
 	
 	@BeforeMethod
 	public void beforeMethod() throws Exception {
@@ -29,37 +29,34 @@ public class NewTest {
 		driver.get(GlobalVariables.glb_Url_Login);
 		driver.manage().window().maximize();
 	}
-
+	
 	@Test
-	public void f() throws InterruptedException, IOException {
+	public void TO_Request_Status() throws InterruptedException, IOException {
+		int _total_inactive_rows = 3;
 		
 		LoginPage loginpage = new LoginPage(driver);
 		RequestPage requestpage = new RequestPage(driver);
 		FiltersPage filterspage = new FiltersPage(driver);
 		
-		loginpage.Login("admin@test.com", "test123");
-		/*
+		loginpage.Login("admin@test.com", "test123");		
 		requestpage.clickFilters();
 		filterspage.Filter("Inactive", "", "", "", "");
 		
+		// Verify that the filter tag "Request Status: Inactive" is displayed on Request Access page.
 		Assert.assertEquals(driver.findElement(By.xpath("//a[@class = 'query__filter__item' and text() = 'Request Status: ']")).getText(), "Request Status: Inactive");
-		Assert.assertEquals(driver.findElements(By.xpath("//a[@class = 'query__filter__item']")).size(),1);
-		//Assert.assertEquals(driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size(),3);
-		*/
 		
-		requestpage.sortByFirstName("descending");
-		requestpage.verifyAllDataRequestList(".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\TC_First_Name_Desc.txt");
-		requestpage.sortByFirstName("ascending");
-		requestpage.verifyAllDataRequestList(".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\TC_First_Name_Asce.txt");
-		/*
-		requestpage.clickFilters();
-		filterspage.Filter("All", "", "", "", "");
-		Assert.assertEquals(0, driver.findElements(By.xpath("//a[@class = 'query__filter__item']")).size());
-		*/
+		// Verify that there is only one filter tag "Request Status: Inactive" displayed on Request Access page.
+		Assert.assertEquals(driver.findElements(By.xpath("//a[@class = 'query__filter__item']")).size(),1);
+		
+		// Verify that the total number of returned Inactive record is 3.
+		Assert.assertEquals(driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size(), _total_inactive_rows);		
+		
+		// Verify that the data displays correctly after filter Request Status: Inactive.
+		requestpage.verifyAllDataRequestList(".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_Request_Status_Inactive.txt");		
 	}
 
 	@AfterMethod
 	public void afterMethod() {
+		//driver.quit();
 	}
-
 }
