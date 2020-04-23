@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-04-23T17:44:53 ICT" name="Default suite" finished-at="2020-04-23T17:45:49 ICT" duration-ms="56134">
+  <suite name="Default suite" duration-ms="56897" started-at="2020-04-23T20:52:38 ICT" finished-at="2020-04-23T20:53:35 ICT">
     <groups>
     </groups>
-    <test started-at="2020-04-23T17:44:53 ICT" name="Default test" finished-at="2020-04-23T17:45:49 ICT" duration-ms="56134">
+    <test name="Default test" duration-ms="56897" started-at="2020-04-23T20:52:38 ICT" finished-at="2020-04-23T20:53:35 ICT">
       <class name="KarrosTechPJ.Karros.NewTest">
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.NewTest@7f010382]" started-at="2020-04-23T17:44:53 ICT" name="beforeMethod" finished-at="2020-04-23T17:45:06 ICT" duration-ms="13421" status="PASS">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.NewTest@7a765367]" name="beforeMethod" is-config="true" duration-ms="14897" started-at="2020-04-23T20:52:38 ICT" finished-at="2020-04-23T20:52:53 ICT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="f()[pri:0, instance:KarrosTechPJ.Karros.NewTest@7f010382]" started-at="2020-04-23T17:45:06 ICT" name="f" finished-at="2020-04-23T17:45:49 ICT" duration-ms="42684" status="PASS">
+        <test-method status="PASS" signature="f()[pri:0, instance:KarrosTechPJ.Karros.NewTest@7a765367]" name="f" duration-ms="41947" started-at="2020-04-23T20:52:53 ICT" finished-at="2020-04-23T20:53:35 ICT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- f -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:KarrosTechPJ.Karros.NewTest@7f010382]" started-at="2020-04-23T17:45:49 ICT" name="afterMethod" finished-at="2020-04-23T17:45:49 ICT" duration-ms="0" status="PASS">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:KarrosTechPJ.Karros.NewTest@7a765367]" name="afterMethod" is-config="true" duration-ms="0" started-at="2020-04-23T20:53:35 ICT" finished-at="2020-04-23T20:53:35 ICT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->

@@ -48,9 +48,9 @@ public class NewTest {
 		*/
 		
 		requestpage.sortByFirstName("descending");
-		requestpage.verifyAllDataRequestList(".\\src\\resources\\RA_MP_TC004_First_Name_Desc.txt");
+		requestpage.verifyAllDataRequestList(".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\TC_First_Name_Desc.txt");
 		requestpage.sortByFirstName("ascending");
-		requestpage.verifyAllDataRequestList(".\\src\\resources\\RA_MP_TC004_First_Name_Asce.txt");
+		requestpage.verifyAllDataRequestList(".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\TC_First_Name_Asce.txt");
 		/*
 		requestpage.clickFilters();
 		filterspage.Filter("All", "", "", "", "");
