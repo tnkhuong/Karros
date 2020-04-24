@@ -29,6 +29,16 @@ public class TC_Sort_First_Name {
   
 	@Test
 	public void TO_Sort_First_Name() throws InterruptedException, IOException {
+		
+		String os = System.getProperty("os.name").toLowerCase();		
+		String firstnamedescdata = ".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_First_Name_Desc.txt";
+		String firstnameascdata = ".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_First_Name_Asce.txt";
+		if (os.contains("mac"))
+		{
+			firstnamedescdata = "src/test/java/KarrosTechPJ/Karros/DataSources/RequestAccess/TC_First_Name_Desc.txt";
+			firstnameascdata = "src/test/java/KarrosTechPJ/Karros/DataSources/RequestAccess/TC_First_Name_Asce.txt";
+		}		
+		
 		LoginPage loginpage = new LoginPage(driver);
 		RequestPage requestpage = new RequestPage(driver);
 		
@@ -36,11 +46,11 @@ public class TC_Sort_First_Name {
 		
 		requestpage.sortByFirstName("descending");
 		// Verify that the data displays correctly after Sort First Name Descending.
-		requestpage.verifyAllDataRequestList(".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_First_Name_Desc.txt");
+		requestpage.verifyAllDataRequestList(firstnamedescdata);
 		
 		requestpage.sortByFirstName("ascending");
 		// Verify that the data displays correctly after Sort First Name Ascending.
-		requestpage.verifyAllDataRequestList(".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_First_Name_Asce.txt");
+		requestpage.verifyAllDataRequestList(firstnameascdata);
 	}
 	
 	@AfterMethod  
