@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Request method:	GET
 Request URI:	https://my-json-server.typicode.com/typicode/demo/posts/1
 Proxy:			<none>
@@ -146,3 +147,5 @@ cf-request-id: 0249d84f8b0000c318670b9200000001
     "id": 1,
     "title": "Post 1"
 }
+=======
+>>>>>>> 0a6d2f398f65bf67a71bd7342f86f2d8ee9f82b0

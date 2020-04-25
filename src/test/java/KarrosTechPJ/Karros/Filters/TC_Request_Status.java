@@ -32,7 +32,15 @@ public class TC_Request_Status {
 	
 	@Test
 	public void TO_Request_Status() throws InterruptedException, IOException {
+		
+		String os = System.getProperty("os.name").toLowerCase();
 		int _total_inactive_rows = 3;
+		int _total_tag_filter = 1;
+		String requeststatusinactivedata = ".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_Request_Status_Inactive.txt";
+		if (os.contains("mac"))
+		{
+			requeststatusinactivedata = "src/test/java/KarrosTechPJ/Karros/DataSources/RequestAccess/TC_Request_Status_Inactive.txt";
+		}
 		
 		LoginPage loginpage = new LoginPage(driver);
 		RequestPage requestpage = new RequestPage(driver);
@@ -46,17 +54,17 @@ public class TC_Request_Status {
 		Assert.assertEquals(driver.findElement(By.xpath("//a[@class = 'query__filter__item' and text() = 'Request Status: ']")).getText(), "Request Status: Inactive");
 		
 		// Verify that there is only one filter tag "Request Status: Inactive" displayed on Request Access page.
-		Assert.assertEquals(driver.findElements(By.xpath("//a[@class = 'query__filter__item']")).size(),1);
+		Assert.assertEquals(driver.findElements(By.xpath("//a[@class = 'query__filter__item']")).size(),_total_tag_filter);
 		
 		// Verify that the total number of returned Inactive record is 3.
 		Assert.assertEquals(driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size(), _total_inactive_rows);		
 		
 		// Verify that the data displays correctly after filter Request Status: Inactive.
-		requestpage.verifyAllDataRequestList(".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_Request_Status_Inactive.txt");		
+		requestpage.verifyAllDataRequestList(requeststatusinactivedata);		
 	}
 
 	@AfterMethod
 	public void afterMethod() {
-		//driver.quit();
+		driver.quit();
 	}
 }
