@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<<<<<<< HEAD
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
-=======
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
->>>>>>> 0a6d2f398f65bf67a71bd7342f86f2d8ee9f82b0
     <classes>
       <class name="KarrosTechPJ.Karros.API.TC_PostAPI">
         <methods>
-          <include name="TO_PostAPI"/>
+          <include name="beforeMethod"/>
+          <include name="TO_API_007"/>
         </methods>
       </class> <!-- KarrosTechPJ.Karros.API.TC_PostAPI -->
     </classes>

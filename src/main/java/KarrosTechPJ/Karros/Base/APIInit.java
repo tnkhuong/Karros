@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Properties;
-
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -14,16 +13,17 @@ import io.restassured.specification.RequestSpecification;
 
 public class APIInit {
 	public static RequestSpecification req;
+	public static PrintStream log;
 	public RequestSpecification requestSpecification() throws IOException
 	{		
 		if(req==null)
 		{
-		PrintStream log =new PrintStream(new FileOutputStream("logging.txt"));
-		 req=new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl"))
-				 .addFilter(RequestLoggingFilter.logRequestTo(log))
-				 .addFilter(ResponseLoggingFilter.logResponseTo(log))
-		.setContentType(ContentType.JSON).build();
-		 return req;
+			log =new PrintStream(new FileOutputStream("logging.txt"));
+			 req=new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl"))
+					 .addFilter(RequestLoggingFilter.logRequestTo(log))
+					 .addFilter(ResponseLoggingFilter.logResponseTo(log))
+			.setContentType(ContentType.JSON).build();
+			 return req;
 		}
 		return req;
 	}

@@ -1,6 +1,9 @@
 package KarrosTechPJ.Karros.Web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,9 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-
-import KarrosTechPJ.Karros.Utilities.GetTXTValue;
 
 public class RequestPage {
 
@@ -99,7 +99,7 @@ public class RequestPage {
 						ac_col=ac_col+1;
 						if (ac_col==column)
 						{							
-							System.out.println("Return value in table at Row: " + row + " and Column: " + column + ": " + td.getText());
+							//System.out.println("Return value in table at Row: " + row + " and Column: " + column + ": " + td.getText());
 							return td.getText();
 						}
 						else if (ac_col>column)
@@ -116,34 +116,107 @@ public class RequestPage {
 			return null;
 	}	
 	
-	public void verifyAllDataRequestList (String file_path) throws InterruptedException, IOException
+	// This function uses to compare all data between 2 Access Request Lists.
+	public boolean compareAllDataRequestList (List<Request> actuallist, List<Request> expectedlist) throws InterruptedException, IOException
+	{				
+		for (int i = 0; i < actuallist.size(); i++)
+		{
+			if (actuallist.size() != expectedlist.size() 
+				|| !actuallist.get(i).getRequeststatus().equals(expectedlist.get(i).getRequeststatus())
+				|| !actuallist.get(i).getDatesubmitted().equals(expectedlist.get(i).getDatesubmitted())
+				|| !actuallist.get(i).getRequester().equals(expectedlist.get(i).getRequester())
+				|| !actuallist.get(i).getStudentid().equals(expectedlist.get(i).getStudentid())
+				|| !actuallist.get(i).getFirstname().equals(expectedlist.get(i).getFirstname())
+				|| !actuallist.get(i).getLastname().equals(expectedlist.get(i).getLastname())
+				|| !actuallist.get(i).getDob().equals(expectedlist.get(i).getDob())
+				|| !actuallist.get(i).getNotes().equals(expectedlist.get(i).getNotes())
+				|| !actuallist.get(i).getUser().equals(expectedlist.get(i).getUser()))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	// This function uses to get all current data Request List.
+	public List<Request> getAllDataRequestList () throws InterruptedException
 	{
-		String _value_from_file = null;
-		String _value_from_table = null;
-			
-		GetTXTValue gettxt = new GetTXTValue();		
+		List<Request> requestlist = new ArrayList<Request>();
 		
-		// Wait until data in table loaded.
-		int rowCount=driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size();
-		int colCount=driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr[1]/td")).size();
+		int rowCount = driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size();		
 		int _count = 0;
 		while (rowCount < 2 && _count < 5){
 			Thread.sleep(1000);
 			_count++;
-			rowCount=driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size();
-		}		
+			rowCount = driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size();
+		}
 		
-		// Verify that the data in table same as data file.		
-		for (int i = 0; i<gettxt.getTotalLine(file_path); i++)
+		// Get all data in table.		
+		for (int i = 0; i<rowCount; i++)
 		{
-			for (int j = 0; j<colCount-1;j++)
-			{			
-				_value_from_file = gettxt.getAValue(file_path,i+1,j+1);
-				System.out.println("Return value in .txt file at Line: " + (i+1) + " and Column: " + (j+1) + ": " + _value_from_file);		
-				_value_from_table = getRequestAccessACell(i+1,j+2);
-			    Assert.assertEquals(_value_from_file, _value_from_table);
+			requestlist.add(new Request(getRequestAccessACell(i+1,2), getRequestAccessACell(i+1,3), getRequestAccessACell(i+1,4), 
+					getRequestAccessACell(i+1,5), getRequestAccessACell(i+1,6), getRequestAccessACell(i+1,7), 
+					getRequestAccessACell(i+1,8), getRequestAccessACell(i+1,9), getRequestAccessACell(i+1,10)));
+		}
+	
+		return requestlist;
+	}
+	
+	// This function uses to sort all data List with condition
+	// Sort Column: Request Access, First Name ...
+	// Sort Type: ascending/descending.
+	public List<Request> sortAllDataRequestList(List<Request> list, String sortcolumn, String sorttype) {		
+		
+		List<Request> requestlist = list;
+		
+		switch (sortcolumn.toLowerCase()) {
+		case "first name":			
+			Collections.sort(requestlist, new Comparator<Request>() {
+	            @Override
+	            public int compare(Request o1, Request o2) {
+	            	if (sorttype.toLowerCase().equals("ascending"))	            		
+	            	{
+	            		return o1.getFirstname().compareTo(o2.getFirstname());
+	            	}else if (sorttype.toLowerCase().equals("descending"))	  
+	            	{
+	            		return o2.getFirstname().compareTo(o1.getFirstname());
+	            	}
+	            	return o1.getFirstname().compareTo(o2.getFirstname());
+	            }
+	        });	
+			break;
+		default:
+			break;
+		}
+		return requestlist;
+	}
+	
+	// This function uses to get all current data Request List with condition base on filter of 
+	// Request Access (Approved, Denied, Pending, Rejected, Inactive)
+	public List<Request> getAllDataRequestListWithRequestAccessFiltered (String filter) throws InterruptedException
+	{
+		List<Request> requestlist = new ArrayList<Request>();
+		
+		int rowCount = driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size();		
+		int _count = 0;
+		while (rowCount < 2 && _count < 5){
+			Thread.sleep(1000);
+			_count++;
+			rowCount = driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size();
+		}
+		
+		// Get all data which has correct condition in table.
+		for (int i = 0; i<rowCount; i++)
+		{			
+			if (filter.equals(driver.findElement(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr[" + (i+1) + "]//p[@class = 'td-request-inactive uppercase']")).getText()))
+			{
+				requestlist.add(new Request(getRequestAccessACell(i+1,2), getRequestAccessACell(i+1,3), getRequestAccessACell(i+1,4), 
+				getRequestAccessACell(i+1,5), getRequestAccessACell(i+1,6), getRequestAccessACell(i+1,7), 
+				getRequestAccessACell(i+1,8), getRequestAccessACell(i+1,9), getRequestAccessACell(i+1,10)));
 			}
 		}
+	
+		return requestlist;
 	}
 	//-------------------------------------------------------//
 }

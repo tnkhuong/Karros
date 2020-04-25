@@ -5,7 +5,8 @@
     <classes>
       <class name="KarrosTechPJ.Karros.API.TC_PostAPI">
         <methods>
-          <include name="TO_PostAPI"/>
+          <include name="beforeMethod"/>
+          <include name="TO_API_007"/>
         </methods>
       </class> <!-- KarrosTechPJ.Karros.API.TC_PostAPI -->
     </classes>

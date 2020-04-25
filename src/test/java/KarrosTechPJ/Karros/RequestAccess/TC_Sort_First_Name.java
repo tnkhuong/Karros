@@ -5,14 +5,18 @@ import org.testng.annotations.Test;
 import KarrosTechPJ.Karros.Base.GlobalVariables;
 import KarrosTechPJ.Karros.Base.WebInit;
 import KarrosTechPJ.Karros.Web.LoginPage;
+import KarrosTechPJ.Karros.Web.Request;
 import KarrosTechPJ.Karros.Web.RequestPage;
 
 import org.testng.annotations.BeforeMethod;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 
 public class TC_Sort_First_Name {
@@ -30,27 +34,25 @@ public class TC_Sort_First_Name {
 	@Test
 	public void TO_Sort_First_Name() throws InterruptedException, IOException {
 		
-		String os = System.getProperty("os.name").toLowerCase();		
-		String firstnamedescdata = ".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_First_Name_Desc.txt";
-		String firstnameascdata = ".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_First_Name_Asce.txt";
-		if (os.contains("mac"))
-		{
-			firstnamedescdata = "src/test/java/KarrosTechPJ/Karros/DataSources/RequestAccess/TC_First_Name_Desc.txt";
-			firstnameascdata = "src/test/java/KarrosTechPJ/Karros/DataSources/RequestAccess/TC_First_Name_Asce.txt";
-		}		
-		
 		LoginPage loginpage = new LoginPage(driver);
 		RequestPage requestpage = new RequestPage(driver);
+		List<Request> sortrequestlistasc = new ArrayList<Request>();
+		List<Request> sortrequestlistdesc = new ArrayList<Request>();		
 		
 		loginpage.Login("admin@test.com", "test123");		
 		
-		requestpage.sortByFirstName("descending");
-		// Verify that the data displays correctly after Sort First Name Descending.
-		requestpage.verifyAllDataRequestList(firstnamedescdata);
+		sortrequestlistasc = requestpage.sortAllDataRequestList(requestpage.getAllDataRequestList(), "First Name", "ascending");
+		sortrequestlistdesc = requestpage.sortAllDataRequestList(requestpage.getAllDataRequestList(), "First Name", "descending");		
 		
+		requestpage.sortByFirstName("descending");
+		
+		// Verify that the data displays correctly after Sort First Name Descending.		
+		Assert.assertEquals(requestpage.compareAllDataRequestList(sortrequestlistdesc, requestpage.getAllDataRequestList()), true);
+				
 		requestpage.sortByFirstName("ascending");
+		
 		// Verify that the data displays correctly after Sort First Name Ascending.
-		requestpage.verifyAllDataRequestList(firstnameascdata);
+		Assert.assertEquals(requestpage.compareAllDataRequestList(sortrequestlistasc, requestpage.getAllDataRequestList()), true);
 	}
 	
 	@AfterMethod  

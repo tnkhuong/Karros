@@ -6,11 +6,14 @@ import KarrosTechPJ.Karros.Base.GlobalVariables;
 import KarrosTechPJ.Karros.Base.WebInit;
 import KarrosTechPJ.Karros.Web.FiltersPage;
 import KarrosTechPJ.Karros.Web.LoginPage;
+import KarrosTechPJ.Karros.Web.Request;
 import KarrosTechPJ.Karros.Web.RequestPage;
 
 import org.testng.annotations.BeforeMethod;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -33,34 +36,37 @@ public class TC_Request_Status {
 	@Test
 	public void TO_Request_Status() throws InterruptedException, IOException {
 		
-		String os = System.getProperty("os.name").toLowerCase();
-		int _total_inactive_rows = 3;
+		
 		int _total_tag_filter = 1;
-		String requeststatusinactivedata = ".\\src\\test\\java\\KarrosTechPJ\\Karros\\DataSources\\RequestAccess\\TC_Request_Status_Inactive.txt";
-		if (os.contains("mac"))
-		{
-			requeststatusinactivedata = "src/test/java/KarrosTechPJ/Karros/DataSources/RequestAccess/TC_Request_Status_Inactive.txt";
-		}
 		
 		LoginPage loginpage = new LoginPage(driver);
 		RequestPage requestpage = new RequestPage(driver);
 		FiltersPage filterspage = new FiltersPage(driver);
+		List<Request> requestlistinactive = new ArrayList<Request>();
+		List<Request> sortrequestlistdesc = new ArrayList<Request>();			
 		
-		loginpage.Login("admin@test.com", "test123");		
+		loginpage.Login("admin@test.com", "test123");	
+		
+		requestlistinactive = requestpage.sortAllDataRequestList(requestpage.getAllDataRequestListWithRequestAccessFiltered("Inactive"), "First Name", "descending");
+		
+		int _total_inactive_rows = driver.findElements(By.xpath("//td[@class = 'td-request-inactive uppercase']")).size();
+		
 		requestpage.clickFilters();
-		filterspage.Filter("Inactive", "", "", "", "");
+		filterspage.Filter("Inactive", "", "", "", "");	
 		
 		// Verify that the filter tag "Request Status: Inactive" is displayed on Request Access page.
 		Assert.assertEquals(driver.findElement(By.xpath("//a[@class = 'query__filter__item' and text() = 'Request Status: ']")).getText(), "Request Status: Inactive");
 		
 		// Verify that there is only one filter tag "Request Status: Inactive" displayed on Request Access page.
 		Assert.assertEquals(driver.findElements(By.xpath("//a[@class = 'query__filter__item']")).size(),_total_tag_filter);
-		
-		// Verify that the total number of returned Inactive record is 3.
+				
+		// Verify that the total number of returned Inactive record is match current data.
 		Assert.assertEquals(driver.findElements(By.xpath("//table[@class = 'table table-striped table-bordered table-hover table-condensed table-body']/tbody/tr")).size(), _total_inactive_rows);		
 		
+		sortrequestlistdesc = requestpage.sortAllDataRequestList(requestpage.getAllDataRequestList(), "First Name", "descending");
+		
 		// Verify that the data displays correctly after filter Request Status: Inactive.
-		requestpage.verifyAllDataRequestList(requeststatusinactivedata);		
+		Assert.assertEquals(requestpage.compareAllDataRequestList(sortrequestlistdesc, requestlistinactive), true);
 	}
 
 	@AfterMethod
