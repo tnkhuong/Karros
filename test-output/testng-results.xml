@@ -1,101 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="1" ignored="0" total="8" passed="7">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1786" started-at="2020-04-26T01:59:25 ICT" finished-at="2020-04-26T01:59:27 ICT">
+  <suite name="Suite" duration-ms="135735" started-at="2020-04-26T02:05:23 ICT" finished-at="2020-04-26T02:07:39 ICT">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1786" started-at="2020-04-26T01:59:25 ICT" finished-at="2020-04-26T01:59:27 ICT">
-      <class name="KarrosTechPJ.Karros.API.TC_PostAPI">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@7a765367]" name="beforeMethod" is-config="true" duration-ms="7" started-at="2020-04-26T01:59:25 ICT" finished-at="2020-04-26T01:59:25 ICT">
+    <test name="Test" duration-ms="135735" started-at="2020-04-26T02:05:23 ICT" finished-at="2020-04-26T02:07:39 ICT">
+      <class name="KarrosTechPJ.Karros.Filters.TC_Request_Status">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.Filters.TC_Request_Status@80503]" name="beforeMethod" is-config="true" duration-ms="14549" started-at="2020-04-26T02:07:18 ICT" finished-at="2020-04-26T02:07:33 ICT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="FAIL" signature="TO_API_007()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@7a765367]" name="TO_API_007" duration-ms="1712" started-at="2020-04-26T01:59:25 ICT" finished-at="2020-04-26T01:59:27 ICT">
-          <exception class="java.net.URISyntaxException">
+        <test-method status="FAIL" signature="TO_Request_Status()[pri:0, instance:KarrosTechPJ.Karros.Filters.TC_Request_Status@80503]" name="TO_Request_Status" duration-ms="5700" started-at="2020-04-26T02:07:33 ICT" finished-at="2020-04-26T02:07:38 ICT">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Illegal character in path at index 56: https://my-json-server.typicode.com/typicode/demo/posts/ 1]]>
+              <![CDATA[expected [3] but found [9]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.net.URISyntaxException: Illegal character in path at index 56: https://my-json-server.typicode.com/typicode/demo/posts/ 1
-at java.net.URI$Parser.fail(URI.java:2848)
-at java.net.URI$Parser.checkChars(URI.java:3021)
-at java.net.URI$Parser.parseHierarchical(URI.java:3105)
-at java.net.URI$Parser.parse(URI.java:3053)
-at java.net.URI.<init>(URI.java:588)
-at io.restassured.internal.http.URIBuilder.convertToURI(URIBuilder.java:91)
-at io.restassured.internal.http.URIBuilder$convertToURI.call(Unknown Source)
-at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:139)
-at io.restassured.internal.RequestSpecificationImpl.generateRequestUriForLogging(RequestSpecificationImpl.groovy:1103)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:497)
-at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
-at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1262)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1029)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:816)
-at groovy.lang.GroovyObject.invokeMethod(GroovyObject.java:39)
-at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:45)
-at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:55)
-at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:51)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:194)
-at io.restassured.internal.RequestSpecificationImpl.newFilterContext(RequestSpecificationImpl.groovy:1064)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:497)
-at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
-at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1262)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1029)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:816)
-at groovy.lang.GroovyObject.invokeMethod(GroovyObject.java:39)
-at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:45)
-at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:55)
-at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:51)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:203)
-at io.restassured.internal.RequestSpecificationImpl.applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy:1653)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:497)
-at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
-at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1262)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1029)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:816)
-at groovy.lang.GroovyObject.invokeMethod(GroovyObject.java:39)
-at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:45)
-at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:55)
-at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:51)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:203)
-at io.restassured.internal.RequestSpecificationImpl.applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy:1661)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:497)
-at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
-at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1262)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1029)
-at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:816)
-at groovy.lang.GroovyObject.invokeMethod(GroovyObject.java:39)
-at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:45)
-at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:55)
-at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:51)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
-at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:203)
-at io.restassured.internal.RequestSpecificationImpl.get(RequestSpecificationImpl.groovy:171)
-at io.restassured.internal.RequestSpecificationImpl.get(RequestSpecificationImpl.groovy)
-at KarrosTechPJ.Karros.API.PostAPIsMethods.getGetPostResponse(PostAPIsMethods.java:16)
-at KarrosTechPJ.Karros.API.TC_PostAPI.TO_API_007(TC_PostAPI.java:154)
+              <![CDATA[java.lang.AssertionError: expected [3] but found [9]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:839)
+at org.testng.Assert.assertEquals(Assert.java:849)
+at KarrosTechPJ.Karros.Filters.TC_Request_Status.TO_Request_Status(TC_Request_Status.java:64)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -108,7 +36,7 @@ at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java
 at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at org.testng.TestRunner$$Lambda$48/192794887.accept(Unknown Source)
+at org.testng.TestRunner$$Lambda$49/2050019814.accept(Unknown Source)
 at java.util.ArrayList.forEach(ArrayList.java:1249)
 at org.testng.TestRunner.privateRun(TestRunner.java:766)
 at org.testng.TestRunner.run(TestRunner.java:587)
@@ -127,11 +55,79 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.net.URISyntaxException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TO_API_007 -->
+        </test-method> <!-- TO_Request_Status -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:KarrosTechPJ.Karros.Filters.TC_Request_Status@80503]" name="afterMethod" is-config="true" duration-ms="682" started-at="2020-04-26T02:07:38 ICT" finished-at="2020-04-26T02:07:39 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- KarrosTechPJ.Karros.Filters.TC_Request_Status -->
+      <class name="KarrosTechPJ.Karros.API.TC_PostAPI">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2020-04-26T02:06:32 ICT" finished-at="2020-04-26T02:06:32 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="TO_API_001()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="TO_API_001" duration-ms="5282" started-at="2020-04-26T02:06:32 ICT" finished-at="2020-04-26T02:06:37 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TO_API_001 -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2020-04-26T02:06:37 ICT" finished-at="2020-04-26T02:06:37 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="TO_API_002()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="TO_API_002" duration-ms="1891" started-at="2020-04-26T02:06:37 ICT" finished-at="2020-04-26T02:06:39 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TO_API_002 -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2020-04-26T02:06:39 ICT" finished-at="2020-04-26T02:06:39 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="TO_API_003()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="TO_API_003" duration-ms="7314" started-at="2020-04-26T02:06:39 ICT" finished-at="2020-04-26T02:06:47 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TO_API_003 -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2020-04-26T02:06:47 ICT" finished-at="2020-04-26T02:06:47 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="TO_API_004()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="TO_API_004" duration-ms="2908" started-at="2020-04-26T02:06:47 ICT" finished-at="2020-04-26T02:06:50 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TO_API_004 -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2020-04-26T02:06:50 ICT" finished-at="2020-04-26T02:06:50 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="TO_API_005()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="TO_API_005" duration-ms="1823" started-at="2020-04-26T02:06:50 ICT" finished-at="2020-04-26T02:06:51 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TO_API_005 -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2020-04-26T02:06:51 ICT" finished-at="2020-04-26T02:06:51 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="TO_API_006()[pri:0, instance:KarrosTechPJ.Karros.API.TC_PostAPI@2f943d71]" name="TO_API_006" duration-ms="26711" started-at="2020-04-26T02:06:51 ICT" finished-at="2020-04-26T02:07:18 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TO_API_006 -->
       </class> <!-- KarrosTechPJ.Karros.API.TC_PostAPI -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      <class name="KarrosTechPJ.Karros.RequestAccess.TC_Sort_First_Name">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:KarrosTechPJ.Karros.RequestAccess.TC_Sort_First_Name@bd8db5a]" name="beforeMethod" is-config="true" duration-ms="21354" started-at="2020-04-26T02:05:23 ICT" finished-at="2020-04-26T02:05:45 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="TO_Sort_First_Name()[pri:0, instance:KarrosTechPJ.Karros.RequestAccess.TC_Sort_First_Name@bd8db5a]" name="TO_Sort_First_Name" duration-ms="46734" started-at="2020-04-26T02:05:45 ICT" finished-at="2020-04-26T02:06:32 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TO_Sort_First_Name -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:KarrosTechPJ.Karros.RequestAccess.TC_Sort_First_Name@bd8db5a]" name="afterMethod" is-config="true" duration-ms="661" started-at="2020-04-26T02:06:32 ICT" finished-at="2020-04-26T02:06:32 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- KarrosTechPJ.Karros.RequestAccess.TC_Sort_First_Name -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

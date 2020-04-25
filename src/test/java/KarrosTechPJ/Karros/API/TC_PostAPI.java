@@ -61,8 +61,7 @@ public class TC_PostAPI {
 	  public void TO_API_003() throws InterruptedException, IOException {
 		  	System.out.println("----------------TO_API_003----------------");	
 			ArrayList<String> expectedid = new ArrayList<String>(Arrays. asList("1", "2", "3"));
-			ArrayList<String> expectedtitle = new ArrayList<String>(Arrays. asList("Post 1", "Post 2", "Post 3"));
-			
+			ArrayList<String> expectedtitle = new ArrayList<String>(Arrays. asList("Post 1", "Post 2", "Post 3"));			
 			int response_size=pam.getGetPostResponse().size();
 			System.out.println("Response size: " + response_size);
 			for(int i=0;i<response_size;i++) 

@@ -3,9 +3,9 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="KarrosTechPJ.Karros.RequestAccess.TC_Sort_First_Name"/>
-      <class name="KarrosTechPJ.Karros.API.TC_PostAPI"/>
+      <class name="KarrosTechPJ.Karros.RequestAccess.TC_Sort_First_Name"/>      
       <class name="KarrosTechPJ.Karros.Filters.TC_Request_Status"/>
+      <class name="KarrosTechPJ.Karros.API.TC_PostAPI"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
