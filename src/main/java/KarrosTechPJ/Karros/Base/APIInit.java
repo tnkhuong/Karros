@@ -30,8 +30,14 @@ public class APIInit {
 	
 	public static String getGlobalValue(String key) throws IOException
 	{
+		String os = System.getProperty("os.name").toLowerCase();
+		String propertiespath = ".\\src\\main\\java\\KarrosTechPJ\\Karros\\Base\\apiglobal.properties";
+		if (os.contains("mac"))
+   		{
+			propertiespath = "src/main/java/KarrosTechPJ/Karros/Base/apiglobal.properties";
+        }		
 		Properties prop =new Properties();
-		FileInputStream fis =new FileInputStream(".\\src\\main\\java\\KarrosTechPJ\\Karros\\Base\\apiglobal.properties");
+		FileInputStream fis =new FileInputStream(propertiespath);
 		prop.load(fis);
 		return prop.getProperty(key);		
 	}
