@@ -165,14 +165,13 @@ public class RequestPage {
 	// This function uses to sort all data List with condition
 	// Sort Column: Request Access, First Name ...
 	// Sort Type: ascending/descending.
-	public List<Request> sortAllDataRequestList(List<Request> list, String sortcolumn, String sorttype) {		
+	public List<Request> sortAllDataRequestList(List<Request> list, String sortcolumn, final String sorttype) {		
 		
 		List<Request> requestlist = list;
 		
-		switch (sortcolumn.toLowerCase()) {
-		case "first name":			
+		if (sortcolumn.toLowerCase().equals("first name"))
+		{
 			Collections.sort(requestlist, new Comparator<Request>() {
-	            @Override
 	            public int compare(Request o1, Request o2) {
 	            	if (sorttype.toLowerCase().equals("ascending"))	            		
 	            	{
@@ -183,11 +182,8 @@ public class RequestPage {
 	            	}
 	            	return o1.getFirstname().compareTo(o2.getFirstname());
 	            }
-	        });	
-			break;
-		default:
-			break;
-		}
+	        });
+		}		
 		return requestlist;
 	}
 	

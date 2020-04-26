@@ -3,12 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="KarrosTechPJ.Karros.API.TC_PostAPI">
+      <class name="KarrosTechPJ.Karros.Filters.TC_Request_Status">
         <methods>
+          <include name="TO_Request_Status"/>
           <include name="beforeMethod"/>
-          <include name="TO_API_007"/>
+          <include name="afterMethod"/>
         </methods>
-      </class> <!-- KarrosTechPJ.Karros.API.TC_PostAPI -->
+      </class> <!-- KarrosTechPJ.Karros.Filters.TC_Request_Status -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
